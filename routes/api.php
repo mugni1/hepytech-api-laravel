@@ -15,4 +15,6 @@ Route::middleware(['auth:sanctum'])->group(function () {
     Route::get('/portfolio', [PortfolioController::class,'index']);
     // create
     Route::post('/portfolio/store', [PortfolioController::class,'store']);
+    // udapte
+    Route::put('/portfolio/{id}/update',[PortfolioController::class,'update']);
 });
