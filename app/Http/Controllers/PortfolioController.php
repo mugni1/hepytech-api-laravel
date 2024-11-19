@@ -20,7 +20,7 @@ class PortfolioController extends Controller
         $request->validate([
             'name' => 'required|max:100',
             'categori_id' => 'required',
-            'image' => 'required|mimes:png,jpg',
+            'image' => 'required|mimes:png,jpg,jfif',
         ]);
 
         $ektensiImage =  $request->file('image')->extension();
@@ -36,5 +36,36 @@ class PortfolioController extends Controller
 
         $data = Portfolio::create($dataRequest);
         return response(['message'=>'Success create new portfolio','data'=>$data]);
+    }
+
+    public function update($id, Request $request){
+        $request->validate([
+            'name'=> 'required|max:100',
+            'categori_id'=>'required',
+            'image'=>'mimes:png,jpg,jfif',
+        ]);
+
+        if ($request->file('image')) {
+            $ektensiImage =  $request->file('image')->extension();
+            $namePortfolio = strtolower(str_replace(' ', '', $request->name));
+            $imageNameNew = $namePortfolio. time() . '.' . $ektensiImage;
+            // simpan ke public storage
+            $request->file('image')->storeAs('img',$imageNameNew);
+
+            // olah data
+            $data = $request->all();
+            $data['image'] = $imageNameNew;
+            // update ke database
+            $result = Portfolio::findOrFail($id);
+            $result->update($data);
+            return response(['message'=>'Success update, Image replace','data'=>$result]);
+        }
+
+        // olah data
+        $data = $request->all();
+        //update data ke db
+        $result = Portfolio::findOrFail($id);
+        $result->update($data);
+        return response(['message'=>'Success update, Image no replace','data'=>$result]);
     }
 }
