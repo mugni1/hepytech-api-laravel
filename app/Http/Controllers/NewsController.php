@@ -47,4 +47,44 @@ class NewsController extends Controller
         $result = News::create($data);
         return response(['message'=>"Succes create news", 'data'=>$result]);
     }
+    
+    public function update($id, Request $request){
+        $request->validate([
+            'name'=>'required|max:100',
+            'text'=>'required',
+            'image'=>'mimes:png,jpg,jfif'
+        ]);
+        
+        // jika ada image
+        if ($request->file('image')) {
+            $extImage = $request->file('image')->extension();
+            $nameNews = strtolower(str_replace(' ','', $request->name));
+            $nameImage = $nameNews . time() . '.' . $extImage;
+            // simpan ke local
+            $request->file('image')->storeAs('img', $nameImage);
+            
+            // olah data
+            $data = $request->all();
+            $data['user_id'] = Auth::user()->id;
+            $data['image'] = $nameImage;
+            
+            // simpan data
+            $result = News::findOrFail($id);
+            $result->update($data);
+            
+            //retunr
+            return response(['message'=>"Succes update news and replace image", 'data'=>$result]);
+        }
+        
+        //olah data
+        $data = $request->all();
+        $data['user_id'] = Auth::user()->id;
+        
+        // simpan data
+        $result = News::findOrFail($id);
+        $result->update($data);
+
+        // return
+        return response(['message'=>"Succes update news no replace image", 'data'=>$result]);
+    }
 }

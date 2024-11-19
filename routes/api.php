@@ -28,4 +28,6 @@ Route::middleware(['auth:sanctum'])->group(function () {
     Route::get('/news/{id}/detail', [NewsController::class,'show']);
     // create
     Route::post('/news/create',[NewsController::class,'create']);
+    // update
+    Route::put('/news/{id}/update', [NewsController::class,'update']);
 });
