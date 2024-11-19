@@ -19,6 +19,7 @@ class NewsListResource extends JsonResource
             "name"=> $this->name,
             "text" => $this->text,
             "user"=>$this->user,
+            "image"=>$this->image,
             "created_at"=>$this->created_at->translatedFormat('l, j F Y - H:i'),
             "updated_at"=>$this->updated_at->translatedFormat('l, j F Y - H:i'),
         ];
