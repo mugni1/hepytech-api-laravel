@@ -11,5 +11,8 @@ Route::middleware(['auth:sanctum'])->group(function () {
     Route::get('/logout', [AuthController::class,'logout']);
 
     //Portfolio
+    // list
     Route::get('/portfolio', [PortfolioController::class,'index']);
+    // create
+    Route::post('/portfolio/store', [PortfolioController::class,'store']);
 });
