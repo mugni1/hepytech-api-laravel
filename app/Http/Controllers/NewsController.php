@@ -12,4 +12,9 @@ class NewsController extends Controller
         $result = News::with('user:id,name')->get();
         return NewsListResource::collection($result);
     }
+
+    public function show($id){
+        $result = News::with('user:id,name')->findOrFail($id);
+        return new NewsListResource($result);
+    }
 }

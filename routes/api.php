@@ -24,4 +24,6 @@ Route::middleware(['auth:sanctum'])->group(function () {
     // NEWS
     // list
     Route::get('/news',[NewsController::class,'index']);
+    // show
+    Route::get('/news/{id}/detail', [NewsController::class,'show']);
 });
