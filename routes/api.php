@@ -17,4 +17,6 @@ Route::middleware(['auth:sanctum'])->group(function () {
     Route::post('/portfolio/store', [PortfolioController::class,'store']);
     // udapte
     Route::put('/portfolio/{id}/update',[PortfolioController::class,'update']);
+    // delete
+    Route::delete('/portfolio/{id}/delete',[PortfolioController::class,'delete']);
 });

@@ -11,11 +11,13 @@ use GuzzleHttp\Promise\Create;
 
 class PortfolioController extends Controller
 {
+    // READ
     public function index(){
        $data = Portfolio::with('categori:id,name')->get();
        return  PortfolioListResource::collection($data);
     }
 
+    // CREATE
     public function store(Request $request){
         $request->validate([
             'name' => 'required|max:100',
@@ -38,6 +40,7 @@ class PortfolioController extends Controller
         return response(['message'=>'Success create new portfolio','data'=>$data]);
     }
 
+    //UPDATE
     public function update($id, Request $request){
         $request->validate([
             'name'=> 'required|max:100',
@@ -67,5 +70,13 @@ class PortfolioController extends Controller
         $result = Portfolio::findOrFail($id);
         $result->update($data);
         return response(['message'=>'Success update, Image no replace','data'=>$result]);
+    }
+
+    //DELETE
+    public function delete($id){
+        $result = Portfolio::findOrFail($id);
+        $result->delete();
+
+        return response(['message'=>'Succes delete', 'data'=>$result]);
     }
 }
