@@ -30,4 +30,6 @@ Route::middleware(['auth:sanctum'])->group(function () {
     Route::post('/news/create',[NewsController::class,'create']);
     // update
     Route::put('/news/{id}/update', [NewsController::class,'update']);
+    // delete
+    Route::delete('/news/{id}/delete', [NewsController::class,'delete']);
 });

@@ -87,4 +87,10 @@ class NewsController extends Controller
         // return
         return response(['message'=>"Succes update news no replace image", 'data'=>$result]);
     }
+
+    public function delete($id){
+        $result = News::findOrFail($id);
+        $result->delete();
+        return response(['message'=>"Succes delete news", 'data'=>$result]);
+    }
 }
