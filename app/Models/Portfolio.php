@@ -10,4 +10,9 @@ class Portfolio extends Model
     use SoftDeletes;
     
     protected $fillable = ['name', 'categori_id', 'image'];
+
+    public function categori()
+    {
+        return $this->belongsTo(Categori::class, 'categori_id', 'id');
+    }
 }
