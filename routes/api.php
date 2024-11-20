@@ -8,12 +8,16 @@ use Illuminate\Support\Facades\Route;
 
 Route::post('/login/auth', [AuthController::class,'login']);
 
+// list portfolio
+Route::get('/portfolio', [PortfolioController::class,'index']);
+
+// list news
+Route::get('/news',[NewsController::class,'index']);
+
 Route::middleware(['auth:sanctum'])->group(function () {
     Route::get('/logout', [AuthController::class,'logout']);
 
     // PORTFOLIO
-    // list
-    Route::get('/portfolio', [PortfolioController::class,'index']);
     // create
     Route::post('/portfolio/store', [PortfolioController::class,'store']);
     // udapte
@@ -22,8 +26,6 @@ Route::middleware(['auth:sanctum'])->group(function () {
     Route::delete('/portfolio/{id}/delete',[PortfolioController::class,'delete']);
 
     // NEWS
-    // list
-    Route::get('/news',[NewsController::class,'index']);
     // show
     Route::get('/news/{id}/detail', [NewsController::class,'show']);
     // create
