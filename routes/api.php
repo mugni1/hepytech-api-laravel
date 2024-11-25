@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\CategoriController;
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\PortfolioController;
 use Illuminate\Http\Request;
@@ -34,4 +35,8 @@ Route::middleware(['auth:sanctum'])->group(function () {
     Route::put('/news/{id}/update', [NewsController::class,'update']);
     // delete
     Route::delete('/news/{id}/delete', [NewsController::class,'delete']);
+
+    // CATEGORI
+    //show
+     Route::get('/categori', [CategoriController::class,'index']);
 });
