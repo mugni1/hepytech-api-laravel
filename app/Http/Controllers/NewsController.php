@@ -23,7 +23,7 @@ class NewsController extends Controller
         $request->validate([
             'name' => 'required|max:100',
             'text' => 'required',
-            'image' => 'mimes:png,jpg,jfif'
+            'image' => 'mimes:png,jpg,jpeg,jfif'
         ]);
         
         // Name Image Default
@@ -52,7 +52,7 @@ class NewsController extends Controller
         $request->validate([
             'name'=>'required|max:100',
             'text'=>'required',
-            'image'=>'mimes:png,jpg,jfif'
+            'image'=>'mimes:png,jpg,jpeg,jfif'
         ]);
         
         // jika ada image
