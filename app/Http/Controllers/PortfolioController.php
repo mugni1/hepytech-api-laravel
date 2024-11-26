@@ -17,6 +17,12 @@ class PortfolioController extends Controller
        return  PortfolioListResource::collection($data);
     }
 
+    // SHOW DETAIL
+    public function show($id){
+        $result = Portfolio::findOrFail($id);
+        return new PortfolioListResource($result);
+    }
+
     // CREATE
     public function store(Request $request){
         $request->validate([
