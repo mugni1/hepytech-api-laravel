@@ -2,12 +2,16 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CategoriController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\PortfolioController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 Route::post('/login/auth', [AuthController::class,'login']);
+
+// HOME 
+Route::get('/home', [HomeController::class,'index']);
 
 // list portfolio
 Route::get('/portfolio', [PortfolioController::class,'index']);
