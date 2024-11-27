@@ -21,10 +21,14 @@ Route::get('/news',[NewsController::class,'index']);
 
 Route::middleware(['auth:sanctum'])->group(function () {
     Route::get('/logout', [AuthController::class,'logout']);
+    
+    // HOME
+    //update
+    Route::put('/home/{id}/update',[HomeController::class,'update']);
 
     // PORTFOLIO
     // show
-     Route::get("/portfolio/{id}/detail", [PortfolioController::class,'show']);
+    Route::get("/portfolio/{id}/detail", [PortfolioController::class,'show']);
     // create
     Route::post('/portfolio/store', [PortfolioController::class,'store']);
     // udapte
