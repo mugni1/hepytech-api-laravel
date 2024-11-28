@@ -6,6 +6,7 @@ use App\Http\Controllers\CategoriController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\PortfolioController;
+use App\Http\Controllers\TrustedController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -14,8 +15,13 @@ Route::post('/login/auth', [AuthController::class,'login']);
 // HOME 
 Route::get('/home', [HomeController::class,'index']);
 
-//ABOUT
+// ABOUT
 Route::get('/about', [AboutController::class,'index']);
+
+// TRUSTED
+// trusted list
+Route::get('/trusted', [TrustedController::class,'index']);
+
 
 // list portfolio
 Route::get('/portfolio', [PortfolioController::class,'index']);
@@ -24,6 +30,7 @@ Route::get('/portfolio', [PortfolioController::class,'index']);
 Route::get('/news',[NewsController::class,'index']);
 
 Route::middleware(['auth:sanctum'])->group(function () {
+    //logout
     Route::get('/logout', [AuthController::class,'logout']);
     
     // HOME
@@ -33,6 +40,10 @@ Route::middleware(['auth:sanctum'])->group(function () {
     // ABOUT
     // update 
     Route::put('/about/{id}/update', [AboutController::class,'update']);
+
+    // TRUSTED
+    // trusted create
+    Route::post('/trusted/create', [TrustedController::class,'store']);
 
     // PORTFOLIO
     // show
