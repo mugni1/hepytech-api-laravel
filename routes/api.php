@@ -46,6 +46,9 @@ Route::middleware(['auth:sanctum'])->group(function () {
     Route::post('/trusted/create', [TrustedController::class,'store']);
     // trusted update 
     Route::put('/trusted/{id}/update', [TrustedController::class,'update']);
+    // trusted delete
+    Route::delete('/trusted/{id}/delete', [TrustedController::class, 'delete']);
+    
 
 
     // PORTFOLIO

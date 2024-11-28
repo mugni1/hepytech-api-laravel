@@ -61,4 +61,12 @@ class TrustedController extends Controller
           // return
           return response(['message'=>'success update', 'data'=>$result]);
     }
+
+    public function delete($id){
+        $result = Trusted::findOrFail($id);
+        $result->delete();
+
+        // return
+        return response(['message'=>'success delete', 'data'=>$result]);
+    }
 }
