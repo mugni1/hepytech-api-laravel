@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Trusted;
+use Carbon\Carbon;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Schema;
@@ -29,6 +30,8 @@ class TrustedSeeder extends Seeder
             Trusted::insert([
                 'image'=>$item['image'],
                 'link' =>$item['link'],
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
             ]);
         });
     }
