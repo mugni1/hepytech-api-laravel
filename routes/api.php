@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AboutController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CategoriController;
 use App\Http\Controllers\HomeController;
@@ -12,6 +13,9 @@ Route::post('/login/auth', [AuthController::class,'login']);
 
 // HOME 
 Route::get('/home', [HomeController::class,'index']);
+
+//ABOUT
+Route::get('/about', [AboutController::class,'index']);
 
 // list portfolio
 Route::get('/portfolio', [PortfolioController::class,'index']);
@@ -48,5 +52,5 @@ Route::middleware(['auth:sanctum'])->group(function () {
 
     // CATEGORI
     //show
-     Route::get('/categori', [CategoriController::class,'index']);
+    Route::get('/categori', [CategoriController::class,'index']);
 });
