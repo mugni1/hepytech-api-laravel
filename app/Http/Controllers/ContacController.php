@@ -11,4 +11,19 @@ class ContacController extends Controller
         $result = Contac::get();
         return response(['data'=>$result]);
     }
+
+    public function update($id, Request $request){
+        $request->validate([
+            'facebook' => 'nullable',
+            'instagram' => 'nullable',
+            'x' => 'nullable'
+        ]);
+        
+        $data = $request->all();
+        
+        $result = Contac::findOrFail($id);
+        $result->update($data);
+
+        return response(['message'=>'succes update contac', 'data'=> $result]);
+    }
 }

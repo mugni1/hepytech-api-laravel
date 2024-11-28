@@ -44,6 +44,10 @@ Route::middleware(['auth:sanctum'])->group(function () {
     // update 
     Route::put('/about/{id}/update', [AboutController::class,'update']);
 
+    // CONTAC
+    //update
+    Route::put('/contac/{id}/update', [ContacController::class,'update']);
+
     // TRUSTED
     // trusted create
     Route::post('/trusted/create', [TrustedController::class,'store']);
