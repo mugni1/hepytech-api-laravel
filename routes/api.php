@@ -44,6 +44,9 @@ Route::middleware(['auth:sanctum'])->group(function () {
     // TRUSTED
     // trusted create
     Route::post('/trusted/create', [TrustedController::class,'store']);
+    // trusted update 
+    Route::put('/trusted/{id}/update', [TrustedController::class,'update']);
+
 
     // PORTFOLIO
     // show
