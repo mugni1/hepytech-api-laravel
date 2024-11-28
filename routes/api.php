@@ -30,6 +30,10 @@ Route::middleware(['auth:sanctum'])->group(function () {
     //update
     Route::put('/home/{id}/update',[HomeController::class,'update']);
 
+    // ABOUT
+    // update 
+    Route::put('/about/{id}/update', [AboutController::class,'update']);
+
     // PORTFOLIO
     // show
     Route::get("/portfolio/{id}/detail", [PortfolioController::class,'show']);
