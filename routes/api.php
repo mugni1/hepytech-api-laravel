@@ -59,8 +59,10 @@ Route::middleware(['auth:sanctum'])->group(function () {
     Route::put('/trusted/{id}/update', [TrustedController::class,'update']);
     // trusted delete
     Route::delete('/trusted/{id}/delete', [TrustedController::class, 'delete']);
-    
 
+    // FOOTER
+    // update
+    Route::put('/footer/{id}/update', [FooterController::class,'update']);
 
     // PORTFOLIO
     // show
