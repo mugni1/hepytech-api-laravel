@@ -4,6 +4,7 @@ use App\Http\Controllers\AboutController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CategoriController;
 use App\Http\Controllers\ContacController;
+use App\Http\Controllers\FooterController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\PortfolioController;
@@ -25,6 +26,9 @@ Route::get('/trusted', [TrustedController::class,'index']);
 
 // CONTAC
 Route::get('/contac', [ContacController::class,'index']);
+
+// FOOTER
+Route::get('/footer', [FooterController::class,'index']);
 
 // list portfolio
 Route::get('/portfolio', [PortfolioController::class,'index']);
