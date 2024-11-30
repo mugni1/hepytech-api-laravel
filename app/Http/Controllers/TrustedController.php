@@ -10,12 +10,12 @@ class TrustedController extends Controller
 {
     public function index(){
         $result = Trusted::get();
-        return $result;
+        return response(['data'=>$result]);
     }
 
     public function store(Request $request){
         $request->validate([
-            'image' => 'required|mimes:png,jpg,jfif,jpeg',
+            'image' => 'required|mimes:png,jpg,jfif,jpeg,webp',
             'link' => 'required'
         ]);
 
@@ -36,7 +36,7 @@ class TrustedController extends Controller
     
     public function update($id, Request $request){
         $request->validate([
-            'image' => 'mimes:png,jpg,jfif,jpeg',
+            'image' => 'mimes:png,jpg,jfif,jpeg,webp',
             'link' => 'required'
         ]);
         
