@@ -18,9 +18,12 @@ class AboutController extends Controller
             'clients' => 'required',
             'project' => 'required',
             'staff' => 'required',
-            'image' => 'required'
+            'image' => 'mimes:png,jpg,jpeg,jfif'
         ]);
 
+        $data = $request->all();
+        
+       if ($request->file('image')) {
         // olah nama gambar
         $extensi = $request->file('image')->extension();
         $nameImage = 'about'.time().'.'.$extensi;
@@ -29,6 +32,7 @@ class AboutController extends Controller
         // olah data
         $data = $request->all();
         $data['image'] = $nameImage;
+       }
 
         // update ke database
         $result = About::findOrFail($id);
