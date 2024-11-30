@@ -19,10 +19,13 @@ class HomeController extends Controller
         "description" => "max:225|required",
         "link_contac" => 'required',
         "link_job_vacancy"=> 'nullable',
-        'image' => 'mimes:png,jpg,jfif,jpeg|required'
+        'image' => 'mimes:png,jpg,jfif,jpeg'
     ]);
     
-    // Store ke public image
+    $data = $request->all();
+
+    if ($request->file('image')) {
+     // Store ke public image
     $ekstensi = $request->file('image')->extension();
     $nameImage = "herosection".time() . '.' . $ekstensi;
     $request->file('image')->storeAs('img', $nameImage);
@@ -30,6 +33,7 @@ class HomeController extends Controller
     // olah data
     $data = $request->all();
     $data['image'] = $nameImage;
+    }
 
     // update ke database
     $result = Home::findOrFail($id);
