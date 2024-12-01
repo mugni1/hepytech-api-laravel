@@ -25,8 +25,7 @@ class NewsController extends Controller
             'text' => 'required',
             'image' => 'mimes:png,jpg,jpeg,jfif'
         ]);
-        
-        // Name Image Default
+         // Name Image Default
         $nameImage = null;
 
         // Jika ada image
