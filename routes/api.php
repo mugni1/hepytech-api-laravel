@@ -37,6 +37,8 @@ Route::get('/portfolio', [PortfolioController::class,'index']);
 Route::get('/news',[NewsController::class,'index']);
 
 Route::middleware(['auth:sanctum'])->group(function () {
+    //me
+    Route::get("/me", [AuthController::class,"me"]);
     //logout
     Route::get('/logout', [AuthController::class,'logout']);
     

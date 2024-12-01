@@ -4,9 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use PhpParser\Node\Stmt\Return_;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\ValidationException;
-use PhpParser\Node\Stmt\Return_;
 
 class AuthController extends Controller
 {
@@ -52,5 +53,10 @@ class AuthController extends Controller
 
         //return message succes delete token
         return response()->json(['message'=>'Succes Logout']);
+    }
+    
+    public function me(){
+        $result = Auth::user();
+        return response(['data'=>$result]);
     }
 }
