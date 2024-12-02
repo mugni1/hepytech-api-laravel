@@ -9,6 +9,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\PortfolioController;
 use App\Http\Controllers\TrustedController;
+use App\Http\Controllers\UserControler;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -41,6 +42,9 @@ Route::middleware(['auth:sanctum'])->group(function () {
     Route::get("/me", [AuthController::class,"me"]);
     //logout
     Route::get('/logout', [AuthController::class,'logout']);
+
+    // USER LIST
+    Route::get('/user',[UserControler::class, 'index']);
     
     // HOME
     //update

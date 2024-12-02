@@ -27,6 +27,17 @@ class User extends Authenticatable
     ];
 
     /**
+     * Get the user that owns the User
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function role()
+    {
+        return $this->belongsTo(Role::class, 'role_id', 'id');
+    }
+
+
+    /**
      * The attributes that should be hidden for serialization.
      *
      * @var array<int, string>
