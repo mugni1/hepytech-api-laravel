@@ -25,6 +25,7 @@ class UsersSeeder extends Seeder
         //data
         $datas = [
            ['name'=>'admin','email'=>'admin@gmail.com','password'=>Hash::make("admin123"), 'role_id'=>1],
+           ['name'=>'asep','email'=>'abankr342@gmail.com','password'=>Hash::make("ASEPAM220507"), 'role_id'=>1],
         ];
         
         collect($datas)->map(function($item){
