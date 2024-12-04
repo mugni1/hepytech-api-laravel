@@ -42,4 +42,11 @@ class UserControler extends Controller
 
         return response(['message'=> 'Success Update User', 'data'=>$result]);
     }
+
+    public function delete($id){
+        $result = User::findOrFail($id);
+        $result->delete();
+        
+        return response(['message'=> 'Success Delete User', 'data'=>$result]);
+    }
 }
