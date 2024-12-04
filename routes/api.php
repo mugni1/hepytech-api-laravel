@@ -44,7 +44,10 @@ Route::middleware(['auth:sanctum'])->group(function () {
     Route::get('/logout', [AuthController::class,'logout']);
 
     // USER LIST
+    // show list
     Route::get('/user',[UserControler::class, 'index']);
+    //store
+    Route::post('/user/store', [UserControler::class,'store']);
     
     // HOME
     //update
