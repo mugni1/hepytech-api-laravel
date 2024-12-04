@@ -27,4 +27,19 @@ class UserControler extends Controller
         // return 
         return response(['message'=>'Succes Create New User', 'data'=>$result]);
     }
+    
+    public function update($id, Request $request){
+        $request->validate([
+            "name" => 'required|max:100',
+            "email" => 'email|required',
+            "password" => 'required',
+            "role_id" => 'required|numeric'
+        ]);
+        
+        $data = $request->all();
+        $result = User::findOrFail($id);
+        $result->update($data);
+
+        return response(['message'=> 'Success Update User', 'data'=>$result]);
+    }
 }
