@@ -16,7 +16,7 @@ class UserControler extends Controller
         // validasi
         $request->validate([
             "name" => 'required|max:100',
-            "email" => 'email|required',
+            "email" => 'email|required|unique:users,email',
             "password" => 'required',
             "role_id" => 'required|numeric'
         ]);
