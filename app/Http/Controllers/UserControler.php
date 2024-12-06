@@ -32,11 +32,17 @@ class UserControler extends Controller
         $request->validate([
             "name" => 'required|max:100',
             "email" => 'email|required',
-            "password" => 'required',
             "role_id" => 'required|numeric'
         ]);
         
-        $data = $request->all();
+        // Ambil semua input kecuali password
+        $data = $request->except('password');
+        
+        // Jika password ada dan tidak kosong, hash dan tambahkan ke $data
+        if ($request->filled('password')) {
+            $data['password'] = bcrypt($request->password);
+        }
+
         $result = User::findOrFail($id);
         $result->update($data);
 
